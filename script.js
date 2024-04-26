@@ -19,3 +19,32 @@ const getComputerChoice = () => {
     }
 };
 
+// Determines winner based on human and computer choices
+function playRound(humanChoice, computerChoice) {
+    if (
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ){
+        console.log(`${humanChoice} beats ${computerChoice}, Player wins!`)
+        humanScore++;
+    }
+    else if (
+        (computerChoice === 'rock' && humanChoice === 'scissors') ||
+        (computerChoice === 'paper' && humanChoice === 'rock') ||
+        (computerChoice === 'scissors' && humanChoice === 'paper') 
+    ) {
+        console.log(`${computerChoice} beats ${humanChoice}, Computer wins!`)
+        computerScore++;
+    }
+    else {
+        console.log(`It's a tie!`);
+    }
+}
+
+// Get player and computer choices 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Plays a single round
+playRound(humanSelection,computerSelection);
