@@ -1,0 +1,77 @@
+/*****************************************************************
+                    Reset and Base Styles
+*****************************************************************/
+
+*,
+*:before,
+*:after {
+    background-color: rgb(10, 38, 54);
+    color:rgb(140, 168, 139);
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*****************************************************************
+                            Header
+*****************************************************************/
+
+/* Header styles */
+header {
+    margin: 0 auto;
+}
+
+/*****************************************************************
+                        Score Container
+*****************************************************************/
+
+.scoreContainer{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+/*****************************************************************
+                        Content Container
+*****************************************************************/
+
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.contentContainer p {
+    padding: 5px;
+}
+
+/*****************************************************************
+                    Button Container
+*****************************************************************/
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin: 20px;
+}
+
+button {
+    width: 80px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 15px;
+}
