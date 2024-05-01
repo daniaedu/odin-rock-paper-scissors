@@ -81,4 +81,4 @@ function gameWinner (humanScore, computerScore) {
 }
 
 // Starts the game by calling the playGame() function
-playGame();
+//playGame();
