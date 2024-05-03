@@ -1,7 +1,11 @@
-// Get player's move using a prompt and converts it to lowercase
-const getHumanChoice = () => {
-    return prompt('Choose your move: Rock, Paper or Scissors').toLowerCase();
-};
+const gameButtons = document.querySelector(".buttonContainer");
+
+// Event listener triggers 1 game of rock paper scissors
+gameButtons.addEventListener("click", event => {
+    if (event.target.classList.contains("gameButton")) {
+        playGame(event.target.innerText.toLowerCase());  
+    }
+})
 
 // Generate computer's random choice (rock, paper, or scissors)
 const getComputerChoice = () => {
@@ -39,30 +43,27 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// Plays 5 rounds of Rock Paper Scissors and keeps score
-function playGame() {
+// Plays 1 round of Rock Paper Scissors and keeps score
+function playGame(humanSelection) {
+    let computerSelection = getComputerChoice();
     let humanScore = 0;
     let computerScore = 0;
     let winner;
 
-    // Loops playRound() 5 times
-    for (let i = 0; i < 5; i++) {
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        winner = playRound(humanSelection,computerSelection);
-    
-        // Updates scores based on the winner
-        switch (winner) {
-            case 'human': 
-                humanScore++;
-                break;
-            case 'computer': 
-                computerScore++;
-                break;
-            case 'tie': 
-                break;
-        }
+    winner = playRound(humanSelection,computerSelection);
+
+    // Updates scores based on the winner
+    switch (winner) {
+        case 'human': 
+            humanScore++;
+            break;
+        case 'computer': 
+            computerScore++;
+            break;
+        case 'tie': 
+            break;
     }
+
     // Calls gameWinner() to determine winner
     gameWinner(humanScore, computerScore)
 }
@@ -79,6 +80,3 @@ function gameWinner (humanScore, computerScore) {
         console.log('Tied game!')
     }
 }
-
-// Starts the game by calling the playGame() function
-//playGame();
