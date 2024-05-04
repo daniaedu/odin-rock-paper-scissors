@@ -1,4 +1,8 @@
 const gameButtons = document.querySelector(".buttonContainer");
+const displayPlayerScore = document.querySelector(".playerScore");
+const displayComputerScore = document.querySelector(".computerScore");
+const displayMoveStatus = document.querySelector(".moveStatus");
+const displayWinner = document.querySelector(".winner");
 
 // Event listener triggers 1 game of rock paper scissors
 gameButtons.addEventListener("click", event => {
@@ -26,7 +30,8 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === 'paper' && computerChoice === 'rock') ||
         (humanChoice === 'scissors' && computerChoice === 'paper')
     ){
-        console.log(`${humanChoice} beats ${computerChoice}, Player wins!`)
+        console.log(`${humanChoice} beats ${computerChoice}`)
+        displayMoveStatus.innerText = `${humanChoice} beats ${computerChoice}`
         return 'human';
     }
     else if (
@@ -34,11 +39,12 @@ function playRound(humanChoice, computerChoice) {
         (computerChoice === 'paper' && humanChoice === 'rock') ||
         (computerChoice === 'scissors' && humanChoice === 'paper') 
     ) {
-        console.log(`${computerChoice} beats ${humanChoice}, Computer wins!`)
+        console.log(`${computerChoice} beats ${humanChoice}`)
+        displayMoveStatus.innerText = `${computerChoice} beats ${humanChoice}`;
         return 'computer';
     }
     else {
-        console.log(`It's a tie!`);
+        displayMoveStatus.innerText = `both threw ${computerChoice}`;
         return 'tie';
     }
 }
@@ -52,13 +58,15 @@ function playGame(humanSelection) {
 
     winner = playRound(humanSelection,computerSelection);
 
-    // Updates scores based on the winner
+    // Updates scores based on the winner on the scoreboard
     switch (winner) {
         case 'human': 
             humanScore++;
+            displayPlayerScore.innerText = Number(displayPlayerScore.innerText) + humanScore;
             break;
         case 'computer': 
             computerScore++;
+            displayComputerScore.innerText = Number(displayComputerScore.innerText) + computerScore;
             break;
         case 'tie': 
             break;
@@ -72,11 +80,14 @@ function playGame(humanSelection) {
 function gameWinner (humanScore, computerScore) {
     if (humanScore > computerScore) {
         console.log('Human wins!');
+        displayWinner.innerText = 'Human wins!'
     }
     else if (computerScore > humanScore) {
         console.log('Computer wins!')
+        displayWinner.innerText = 'Computer wins!'
     }
     else {
         console.log('Tied game!')
+        displayWinner.innerText = 'Tied game!'
     }
 }
